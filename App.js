@@ -8,7 +8,14 @@ const Quiz = ({question, choices, image, onSelect}) => {
         <View style={{marginTop: 20, marginLeft:5, marginRight: 5}}>
             <Text style={{fontWeight: 'bold', fontSize: 15, marginBottom: 5}}>{question}</Text>
             <Image source={image} style={{width:'100%', height:300}}/>
-            <RNPickerSelect onValueChange={onSelect} items={choices}/>
+            <RNPickerSelect
+                onValueChange={onSelect}
+                items={choices}
+                placeholder={{label: 'Make a choice'}}
+                style = {{
+                    placeholder: {fontSize: 16}
+                }}
+            />
         </View>
     )
 }
