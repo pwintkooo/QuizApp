@@ -36,6 +36,11 @@ const App = () => {
     };
 
     const handleSubmit = () => {
+        if (!q1 || !q2 || !q3 || !q4 || !q5) {
+            Alert.alert('Please answer all questions before submitting!');
+            return;
+        }
+
         let score = 0;
         if (q1 === correctAnswer.q1) score++;
         if (q2 === correctAnswer.q2) score++;
@@ -43,7 +48,7 @@ const App = () => {
         if (q4 === correctAnswer.q4) score++;
         if (q5 === correctAnswer.q5) score++;
 
-        if (score === 1) {
+        if (score === 1 || score === 0) {
             Alert.alert(`You got ${score} point. Try better next time!`)
         } else if (score === 2 || score === 3) {
             Alert.alert(`You got ${score} point. Nice try!`)
@@ -52,7 +57,6 @@ const App = () => {
         } else if (score === 5) {
             Alert.alert(`You got ${score} point. Awesome!`)
         }
-
     }
 
   return (
@@ -86,7 +90,7 @@ const App = () => {
               image = {require('./img/montreal.jpeg')}
               choices = {[
                   {label: 'Montreal Botanical Garden', value: 'Montreal Botanical Garden'},
-                  {label: 'New YorkBotanical Garden', value: 'New YorkBotanical Garden'},
+                  {label: 'New York Botanical Garden', value: 'New York Botanical Garden'},
                   {label: 'Vallarta Botanical Garden', value: 'Vallarta Botanical Garden'},
                   {label: 'Kirstenbosch National Botanical Garden', value: 'Kirstenbosch National Botanical Garden'}
               ]}
