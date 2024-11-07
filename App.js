@@ -1,19 +1,48 @@
 import React,{useState} from 'react';
-import {ScrollView, Text, Image, View, Button, Alert} from 'react-native';
+import {ScrollView, Text, Image, View, Button, Alert, StyleSheet} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from "react-native-vector-icons/FontAwesome6";
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#ACC8E5',
+        alignItems: 'center',
+        marginTop: 15,
+        marginBottom: 15,
+        marginLeft: 8,
+        marginRight: 8,
+        borderRadius: 20
+    },
+    title: {
+        color: '#112A46',
+        fontWeight: 'bold',
+        fontSize: 18,
+        textAlign: "center"
+    },
+    titleBox: {
+        backgroundColor: '#B6C3D1',
+        padding: 20,
+        alignSelf: 'stretch',
+        alignItems: 'center',
+        borderRadius: 20
+    },
+    image: {
+        width:'100%',
+        height:300,
+    }
+})
+
 const Quiz = ({question, choices, image, onSelect}) => {
     return (
-        <View style={{marginTop: 20, marginLeft:5, marginRight: 5}}>
-            <Text style={{fontWeight: 'bold', fontSize: 15, marginBottom: 5}}>{question}</Text>
-            <Image source={image} style={{width:'100%', height:300}}/>
+        <View style={styles.container}>
+            <Text style={[styles.title, styles.titleBox]}>{question}</Text>
+            <Image source={image} style={styles.image}/>
             <RNPickerSelect
                 onValueChange={onSelect}
                 items={choices}
                 placeholder={{label: 'Make a choice'}}
                 style = {{
-                    placeholder: {fontSize: 16}
+                    placeholder: {fontSize: 16, color: '#112A46'}
                 }}
             />
         </View>
@@ -62,7 +91,14 @@ const App = () => {
   return (
       <ScrollView>
           <Text>{'\n'}</Text>
-        <Text style={{fontWeight: 'bold', fontSize: 20, color: 'green', marginLeft:5, marginRight: 5}}>Welcome to Quiz Session <Icon name='trophy' size={20}/></Text>
+        <Text style={{
+            fontWeight: 'bold',
+            fontSize: 20,
+            color: 'green',
+            textAlign: 'center',
+            fontFamily: 'monospace'
+        }}>Welcome to Quiz Session <Icon name='trophy' size={20}/>
+        </Text>
         <Quiz
             question = 'What bridge is this?'
             image = {require('./img/goldengate.jpeg')}
